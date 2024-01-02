@@ -7,17 +7,21 @@ import SpiritrealmPage from './SpiritrealmPage';
 import ShadowKingdomPage from './ShadowKingdomPage';
 import UserDetailPage from './UserDetailsPage';
 import BookingConfirmPage from './BookingConfirmPage';
+import PrintTicketPage from './PrintTicketPage';
 import axios from 'axios';
 
 const ParksPage = () => {
     const [activeTemplate, setActiveTemplate] = useState('main');
     const [selectedAdventures, setSelectedAdventures] = useState({});
     const [bookingNumber, setBookingNumber] = useState();
+    const [userDetail, setUserDetail] = useState();
 
     const onSave = (parkName, adventures) => {
         setSelectedAdventures((prev) => ({ ...prev, [parkName]: adventures }));
     };
     const onBook = async (userDetails) => {
+
+        setUserDetail(userDetails);
 
         try {
             const response = await axios.post('/admin/bookticket', { userDetails, selectedAdventures });
@@ -51,6 +55,8 @@ const ParksPage = () => {
             return <UserDetailPage setActiveTemplate={setActiveTemplate} onBook={(userDetails) => onBook(userDetails)} />
         case 'booking':
             return <BookingConfirmPage setActiveTemplate={setActiveTemplate} bookingNumber={bookingNumber} />;
+        case 'print':
+            return <PrintTicketPage setActiveTemplate={setActiveTemplate} userDetails={userDetail} selectedAdventures={selectedAdventures} bookingNumber={bookingNumber} />;
         default:
             return <MainPage setActiveTemplate={setActiveTemplate} />;
     }

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const UserDetailPage = ({ setActiveTemplate, onBook }) => {
     const [user, setUser] = useState({
-        name: "Pardeep", email: "", contact: "", address: "", date: "", adult: 1, children: 2,
+        name: "", email: "", contact: "", address: "", date: "", adult: 1, children: 2,
     });
 
     let name, value;

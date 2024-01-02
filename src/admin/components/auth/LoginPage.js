@@ -37,10 +37,13 @@ const LoginPage = ({ setActiveTemplate }) => {
 
   return (
     <div className="row m-5">
-      <div className='col-lg-4 col-sm-3'></div>
+      <div className='col-lg-1 col-sm-12'></div>
 
+      <div className='col-lg-5 col-sm-12 text-warning my-5 p-5'>
+        <h1 className='wednesday-title'>WEDNESDAY WICKED ADVENTURES</h1>
+      </div>
 
-      <div className="col-lg-4 col-sm-6">
+      <div className="col-lg-5 col-sm-12">
         <div className="card bg-black text-warning" >
           <div className="card-body">
             <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
@@ -81,7 +84,7 @@ const LoginPage = ({ setActiveTemplate }) => {
       </div>
 
 
-      <div className='col-lg-4 col-sm-3'></div>
+      <div className='col-lg-41col-sm-12'></div>
     </div>
   )
 }

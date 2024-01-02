@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const BookingConfirmPage = ({ bookingNumber }) => {
+const BookingConfirmPage = ({ setActiveTemplate, bookingNumber }) => {
 
     const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ const BookingConfirmPage = ({ bookingNumber }) => {
     }
 
     const handlePrint = () => {
-
+        setActiveTemplate('print');
     }
 
     const handleLogout = async () => {
