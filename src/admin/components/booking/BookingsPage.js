@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
-const BookingsPage = ({ setActiveTemplate, email, setBooking }) => {
+const BookingsPage = ({ setActiveTemplate, setBooking }) => {
     const [bookings, setBookings] = useState([]);
     
     const handleEditBooking = (booking) => {
@@ -14,7 +14,7 @@ const BookingsPage = ({ setActiveTemplate, email, setBooking }) => {
 
     const handleDeleteBooking = async (booking) => {
         try{
-            const response = await axios.post("/admin/deletebooking",{booking});
+            const response = await axios.post("/bookings/delete",{booking});
             const message = response.data.message;
             window.alert(message);
             window.location.reload();
@@ -27,7 +27,7 @@ const BookingsPage = ({ setActiveTemplate, email, setBooking }) => {
 
         const checkBooking = async () => {
             try {
-                const response = await axios.post("/admin/mybookings", { email });
+                const response = await axios.post("/bookings/all");
                 setBookings(response.data.bookings);
 
             } catch (error) {
@@ -36,7 +36,7 @@ const BookingsPage = ({ setActiveTemplate, email, setBooking }) => {
         }
 
         checkBooking();
-    },[email]);
+    });
 
     return (
         <>

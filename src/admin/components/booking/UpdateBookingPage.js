@@ -13,7 +13,6 @@ const UpdateBookingPage = () => {
     }
 
     const handlePrint = () => {
-
     }
 
     const handleLogout = async () => {

@@ -26,7 +26,7 @@ const ParksPage = () => {
         setUserDetail(userDetails);
 
         try {
-            const response = await axios.post('/bookticket', { userDetails, selectedAdventures });
+            const response = await axios.post('/bookings/create', { userDetails, selectedAdventures });
 
             const { message, bookingnumber } = response.data;
             setBookingNumber(bookingnumber);

@@ -10,15 +10,12 @@ import ErrorPage from './ErrorPage';
 const AdminBookingsPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [email, setEmail] = useState("");
-
   useEffect(() => {
     setLoading(true);
     const checkAuthentication = async () => {
       try {
         const response = await axios.post('/admin/authenticate');
         if (response.status === 200) {
-          setEmail(response.data.email);
           setIsLoggedIn(true);
         } else {
           setIsLoggedIn(false);
@@ -45,7 +42,7 @@ const AdminBookingsPage = () => {
               {isLoggedIn ? (
                 <div>
                   <LoggedInNavbar />
-                  <HandleBookingsPage email={email} />
+                  <HandleBookingsPage />
                 </div>
               ) : (
                 <div>

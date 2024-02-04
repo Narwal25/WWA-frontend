@@ -10,7 +10,6 @@ import ErrorPage from './ErrorPage';
 const ViewBookingsPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [email, setEmail] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -18,7 +17,6 @@ const ViewBookingsPage = () => {
       try {
         const response = await axios.post('/authenticate');
         if (response.status === 200) {
-          setEmail(response.data.email);
           setIsLoggedIn(true);
         } else {
           setIsLoggedIn(false);
@@ -45,7 +43,7 @@ const ViewBookingsPage = () => {
               {isLoggedIn ? (
                 <div>
                   <LoggedInNavbar />
-                  <BookingsPage email={email} />
+                  <BookingsPage />
                 </div>
               ) : (
                 <div>

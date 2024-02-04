@@ -29,7 +29,7 @@ const EditBookingPage = ({ setActiveTemplate, booking }) => {
 
     const handleBook = async (e) => {
         try {
-            const response = await axios.post('/admin/editticket', { user, booking });
+            const response = await axios.post('/bookings/edit', { user, booking });
             const { message } = response.data;
             window.alert(message);
             setActiveTemplate('update');

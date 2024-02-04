@@ -17,7 +17,7 @@ body {
   justify-content: center;
   height: 30vh;
 }
- 
+
 .booking-body {
   margin-top: 20%;
 }
@@ -32,4 +32,10 @@ body {
 
 .wednesday-title {
   font-size: 70px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  margin: 0px;
+  margin-right: 20px !important;
 }
