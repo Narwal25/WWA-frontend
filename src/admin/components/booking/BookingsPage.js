@@ -36,7 +36,7 @@ const BookingsPage = ({ setActiveTemplate, setBooking }) => {
         }
 
         checkBooking();
-    });
+    }, []);
 
     return (
         <>
