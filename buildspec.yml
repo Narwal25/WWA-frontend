@@ -1,0 +1,21 @@
+version: 0.2
+
+env:
+  parameter-store:
+    DOCKER_USERNAME: /demoapp/docker-cred-username
+    DOCKER_PASSWORD: /demoapp/docker-cred-password
+    DOCKER_URL: /demoapp/docker-registry-url
+
+phases:
+  install:
+    runtime-version:
+      nodejs: 14
+  build:
+    commands:
+    - echo "build dockerfile"
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "$DOCKER_URL"
+    - docker build -t "$DOCKER_URL/$DOCKER_USERNAME/demo-react-app:latest" .
+    - docker push "$DOCKER_URL/$DOCKER_USERNAME/demo-react-app:latest"
+  post_build:
+    commands:
+      echo "Build Successful"
