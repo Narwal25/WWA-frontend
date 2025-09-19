@@ -13,8 +13,8 @@ const WelcomePage = () => {
             return <LoginPage setActiveTemplate={setActiveTemplate} />;
         // case 'signup':
         //     return <SignupPage setActiveTemplate={setActiveTemplate} />;
-        case 'forgotPassword':
-            return <ForgotPasswordPage setActiveTemplate={setActiveTemplate} />;
+        // case 'forgotPassword':
+        //     return <ForgotPasswordPage setActiveTemplate={setActiveTemplate} />;
         default:
             return <LoginPage setActiveTemplate={setActiveTemplate} />;
     }

@@ -64,9 +64,9 @@ const LoginPage = ({ setActiveTemplate }) => {
                 </div>
               </div>
 
-              <div className='mb-4'>
+              {/* <div className='mb-4'>
                 <Link className="text-warning" onClick={handleForgotClick} >Forgot Parssword?</Link>
-              </div>
+              </div> */}
 
               <div className="row mx-4 mb-3 mb-lg-4">
                 <div className='col'>
