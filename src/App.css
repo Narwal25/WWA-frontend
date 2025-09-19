@@ -4,7 +4,7 @@
 }
 
 body {
-  background-image: url("../public/bg.jpg");
+  background-image: url("../public/bg.webp");
   background-size: cover;
   height: 100vh;
 }
