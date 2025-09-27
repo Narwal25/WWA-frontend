@@ -1,7 +1,7 @@
 // /admin/components/auth/LoginPage.js
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../../lib/api';
 
 const LoginPage = ({ setActiveTemplate }) => {
 
@@ -13,7 +13,7 @@ const LoginPage = ({ setActiveTemplate }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/admin/login', { email, password }, { withCredentials: true });
+      const response = await api.post('/admin/login', { email, password }, { withCredentials: true });
 
       const { message } = response.data;
       window.alert(message);

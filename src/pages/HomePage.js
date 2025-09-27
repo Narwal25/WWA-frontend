@@ -1,7 +1,7 @@
 // pages/HomePage.js
 import React, { useState, useEffect } from 'react';
 import BeatLoader from "react-spinners/BeatLoader";
-import axios from 'axios';
+import api from '../lib/api';
 import LoggedInNavbar from '../components/common/LoggedInNavbar';
 import Navbar from '../components/common/Navbar';
 import WelcomePage from '../components/auth/WelcomePage';
@@ -15,7 +15,7 @@ const HomePage = () => {
     setLoading(true);
     const checkAuthentication = async () => {
       try {
-        const response = await axios.post('/authenticate');
+        const response = await api.post('/authenticate');
         if (response.status === 200) {
           setIsLoggedIn(true);
         } else {

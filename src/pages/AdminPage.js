@@ -1,7 +1,7 @@
 // pages/AdminPage.js
 import React, { useState, useEffect } from 'react';
 import BeatLoader from "react-spinners/BeatLoader";
-import axios from 'axios';
+import api from '../lib/api';
 import LoggedInNavbar from '../admin/components/common/LoggedInNavbar';
 import Navbar from '../admin/components/common/Navbar';
 import WelcomePage from '../admin/components/auth/WelcomePage';
@@ -15,7 +15,7 @@ const AdminPage = () => {
     setLoading(true);
     const checkAuthentication = async () => {
       try {
-        const response = await axios.post('/admin/authenticate');
+        const response = await api.post('/admin/authenticate');
         if (response.status === 200) {
           setIsLoggedIn(true);
         } else {

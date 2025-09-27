@@ -1,14 +1,15 @@
 // /admin/components/common/LoggedInNavbar.js
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../../lib/api';
+
 
 const LoggedInNavbar = () => {
   
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      await axios.post('/admin/logout');
+      await api.post('/admin/logout');
       navigate('/admin');
       window.location.reload();
     } catch (error) {

@@ -1,7 +1,7 @@
 // /comoponent/parks/BookingConfirmPage.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from '../../lib/api';
 
 const BookingConfirmPage = ({ setActiveTemplate, bookingNumber }) => {
 
@@ -17,7 +17,7 @@ const BookingConfirmPage = ({ setActiveTemplate, bookingNumber }) => {
 
     const handleLogout = async () => {
         try {
-            await axios.post('/logout');
+            await api.post('/logout');
             navigate('/');
             window.location.reload();
         } catch (error) {

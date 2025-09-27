@@ -1,6 +1,6 @@
 // /admin/components/booking/EditBookingPage.js
 import React, { useState } from "react";
-import axios from 'axios';
+import api from '../../../lib/api';
 
 const EditBookingPage = ({ setActiveTemplate, booking }) => {
     const [user, setUser] = useState({
@@ -29,7 +29,7 @@ const EditBookingPage = ({ setActiveTemplate, booking }) => {
 
     const handleBook = async (e) => {
         try {
-            const response = await axios.post('/bookings/edit', { user, booking });
+            const response = await api.post('/bookings/edit', { user, booking });
             const { message } = response.data;
             window.alert(message);
             setActiveTemplate('update');

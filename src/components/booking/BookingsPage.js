@@ -1,6 +1,6 @@
 // /comoponent/booking/BookingPage.js
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../../lib/api';
 
 
 const BookingsPage = () => {
@@ -10,7 +10,7 @@ const BookingsPage = () => {
 
         const checkBooking = async () => {
             try {
-                const response = await axios.post("/bookings/my");
+                const response = await api.post("/bookings/my");
                 setBookings(response.data.bookings);
 
             } catch (error) {

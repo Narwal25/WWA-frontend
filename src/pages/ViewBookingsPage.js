@@ -1,6 +1,6 @@
 // /pages/ViewBookingsPage.js
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../lib/api';
 import BeatLoader from 'react-spinners/BeatLoader';
 import LoggedInNavbar from '../components/common/LoggedInNavbar';
 import BookingsPage from '../components/booking/BookingsPage';
@@ -15,7 +15,7 @@ const ViewBookingsPage = () => {
     setLoading(true);
     const checkAuthentication = async () => {
       try {
-        const response = await axios.post('/authenticate');
+        const response = await api.post('/authenticate');
         if (response.status === 200) {
           setIsLoggedIn(true);
         } else {

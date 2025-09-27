@@ -1,6 +1,6 @@
 // /comoponent/auth/SignupPage.js
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../../lib/api';
 
 const SignupPage = ({ setActiveTemplate }) => {
 
@@ -27,7 +27,7 @@ const SignupPage = ({ setActiveTemplate }) => {
     try {
       const { firstname, lastname, email, password, cpassword } = user;
 
-      const response = await axios.post('/signup', { firstname, lastname, email, password, cpassword });
+      const response = await api.post('/signup', { firstname, lastname, email, password, cpassword });
 
       const { message } = response.data;
       window.alert(message);

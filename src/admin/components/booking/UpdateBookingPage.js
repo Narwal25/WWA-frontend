@@ -1,7 +1,7 @@
 // /admin/components/booking/UpdaeBookingPage.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from '../../../lib/api';
 
 const UpdateBookingPage = () => {
 
@@ -17,7 +17,7 @@ const UpdateBookingPage = () => {
 
     const handleLogout = async () => {
         try {
-            await axios.post('/admin/logout');
+            await api.post('/admin/logout');
             navigate('/admin');
             window.location.reload();
         } catch (error) {

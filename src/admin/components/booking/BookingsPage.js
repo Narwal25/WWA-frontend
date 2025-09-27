@@ -1,6 +1,6 @@
 // /admin/components/booking/BookingsPage.js
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../../../lib/api';
 
 
 const BookingsPage = ({ setActiveTemplate, setBooking }) => {
@@ -14,7 +14,7 @@ const BookingsPage = ({ setActiveTemplate, setBooking }) => {
 
     const handleDeleteBooking = async (booking) => {
         try{
-            const response = await axios.post("/bookings/delete",{booking});
+            const response = await api.post("/bookings/delete",{booking});
             const message = response.data.message;
             window.alert(message);
             window.location.reload();
@@ -27,7 +27,7 @@ const BookingsPage = ({ setActiveTemplate, setBooking }) => {
 
         const checkBooking = async () => {
             try {
-                const response = await axios.post("/bookings/all");
+                const response = await api.post("/bookings/all");
                 setBookings(response.data.bookings);
 
             } catch (error) {

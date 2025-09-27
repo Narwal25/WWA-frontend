@@ -9,7 +9,7 @@ import UserDetailPage from './UserDetailsPage';
 import BookingConfirmPage from './BookingConfirmPage';
 import PrintTicketPage from './PrintTicketPage';
 
-import axios from 'axios';
+import api from '../../lib/api';
 
 const ParksPage = () => {
     const [activeTemplate, setActiveTemplate] = useState('main');
@@ -26,7 +26,7 @@ const ParksPage = () => {
         setUserDetail(userDetails);
 
         try {
-            const response = await axios.post('/bookings/create', { userDetails, selectedAdventures });
+            const response = await api.post('/bookings/create', { userDetails, selectedAdventures });
 
             const { message, bookingnumber } = response.data;
             setBookingNumber(bookingnumber);

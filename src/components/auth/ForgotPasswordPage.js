@@ -1,6 +1,7 @@
 // /comoponent/auth/ForgotPasswordPage.js
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../../lib/api';
+
 import { useNavigate } from 'react-router-dom';
 
 const ForgetPasswordPage = () => {
@@ -19,7 +20,7 @@ const ForgetPasswordPage = () => {
     const forgotPassword = async () => {
         
         try {
-            const response = await axios.post('/forgotpassword', { email, password, cpassword });
+            const response = await api.post('/forgotpassword', { email, password, cpassword });
       
             const { message } = response.data;
             window.alert(message);
