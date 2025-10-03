@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wwa-frontend
+spec:
+  selector:
+    app: wwa-frontend
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80

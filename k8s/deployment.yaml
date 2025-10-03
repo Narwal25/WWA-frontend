@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wwa-frontend
+spec:
+  replicas: 3
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: wwa-frontend
+  template:
+    metadata:
+      labels:
+        app: wwa-frontend
+    spec:
+      containers:
+        - name: wwa-frontend-container
+          image: narwal25/wwa-frontend:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: wwa-frontend-volume
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+            - name: wwa-frontend-volume
+              mountPath: /usr/share/nginx/html/config.js
+              subPath: config.js
+      volumes:
+        - name: wwa-frontend-volume
+          configMap:
+            name: wwa-config

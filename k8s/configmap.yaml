@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wwa-config 
+data:
+  nginx.conf: |
+    worker_processes  1;
+
+    events {
+        worker_connections  1024;
+    }
+
+    http {
+        include       mime.types;
+        default_type  application/octet-stream;
+        sendfile        on;
+        keepalive_timeout  65;
+
+        server {
+            listen       80;
+            server_name  localhost;
+
+            location /api-docs/ {
+              proxy_pass http://wwa-backend:5000/api-docs/;
+            }
+
+            location /api/ {
+              proxy_pass http://wwa-backend:5000/api/;
+            }
+
+            location / {
+                if ($request_method = POST) {
+                    proxy_pass http://wwa-backend:5000;
+                }
+                root   /usr/share/nginx/html;
+                try_files $uri /index.html;
+            }
+
+            error_page   500 502 503 504  /50x.html;
+            location = /50x.html {
+                root   /usr/share/nginx/html;
+            }
+
+        }
+
+    }
+
+  config.js : |
+    window.RUNTIME_CONFIG = {
+      API_URL: "/api"
+    };
